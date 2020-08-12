@@ -1,0 +1,11 @@
+h1 Hi My Name is Books :))
+a(href="/books/create") CreatesBook
+ul  
+    each book in books
+        li
+            span= book.title
+            a(href="/books/view") View
+            span &nbsp;
+            a(href="/books/update/"+book.id) Update
+            span &nbsp;
+            a(href="/books/"+book.id+"/delete") Delete

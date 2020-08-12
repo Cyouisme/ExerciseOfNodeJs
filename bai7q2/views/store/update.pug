@@ -1,0 +1,9 @@
+h1 Hello, My name is UpdatesBook!!!
+a(href="/books") HOME
+form(method="POST" id="1") 
+    label New Title:
+    input(type="text",name='title' value= autofocus )
+    button Update
+script. 
+    var idAction= document.getElementById('1');
+    idAction.action= "/books/update/" + id;

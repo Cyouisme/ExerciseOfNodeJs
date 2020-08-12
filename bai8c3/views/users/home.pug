@@ -1,0 +1,27 @@
+extends ../layout/common 
+
+block content
+    h1 Hi My Name is Users :))
+    button(class="btn btn-outline-warning ml-2")
+        a(href='/') HOMEMANAGE
+    button(class="btn btn-outline-warning ml-2")
+        a(href="/users/create") CreatesUser
+    form(action="/users/user",method="GET", class="d-inline-block")
+        input(type="text",name="q",value=valued,class="btn btn-outline-secondary ml-2")
+        button(class="btn btn-outline-warning ml-2") search
+    table(class="table ml-2")
+        thead
+            tr
+                th Name
+                th Phone
+                th Update
+                th Delete
+        tbody
+            each user in users
+                tr
+                    td= user.name
+                    td= user.phone
+                    td 
+                        a(href="/users/update/"+user.id) Update
+                    td    
+                        a(href="/users/"+user.id+"/delete") Delete

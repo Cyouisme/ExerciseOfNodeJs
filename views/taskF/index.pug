@@ -1,0 +1,13 @@
+h1 Hello, i'm Cyou!!!
+a(href="/todos/create") New Work
+form(action="/todos/task",method="GET")
+    input(type="text", name="q",value=valued)
+    button search
+ul
+    each task in tasks
+        li
+            span= task.work
+            span &nbsp;
+            a(href='/todos/'+task.id) View
+            span &nbsp;
+            a(href='/todos/'+task.id+'/delete') Delete
