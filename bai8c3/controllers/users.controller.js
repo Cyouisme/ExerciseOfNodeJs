@@ -38,6 +38,20 @@ module.exports.update = function (req, res) {
 
 module.exports.postCreate = function (req, res) {
     req.body.id = shortid.generate();
+    var errors = [];
+    if(!req.body.name){
+        errors.push("Name is requied")
+    }
+    if (!req.body.phone){
+        errors.push("Phone is requied")
+    }
+    if (errors.length){
+        res.render("users/create",{
+            errors: errors,
+            valued: req.body
+        });
+        return;
+    }
     db.get("users")
         .push(req.body)
         .write();
@@ -48,6 +62,20 @@ module.exports.postUpdate = function (req, res) {
     var id = req.params.id;
     var name = req.body.name;
     var phone = req.body.phone;
+    var errors = [];
+    if(!name){
+        errors.push("Name is requied")
+    }
+    if (!phone){
+        errors.push("Phone is requied")
+    }
+    if (errors.length){
+        res.render("users/create",{
+            errors: errors,
+            valued: req.body
+        });
+        return;
+    }
     db.get("users")
         .find({ id: id })
         .assign({ name: name, phone: phone })

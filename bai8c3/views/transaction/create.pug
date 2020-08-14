@@ -5,14 +5,13 @@ block content
     button(class="btn btn-outline-warning ml-2")
         a(href='/transactions') HOME
     form(action='/transactions/create',method='POST')
-        label Create Transactions:
-        br
-        select(name='userId',class="custom-select")
-            each user in users
-                option(value= user.id) #{user.name}
-        br
-        select(name='bookId',class="custom-select")
-            each book in books
-                option(value= book.id) #{book.title}
-        br
+        .form-group
+            label Create Transactions:
+            select.form-group(name='userId',class="custom-select")
+                each user in users
+                    option(value= user.id) #{user.name}
+        .form-group            
+            select.form-group(name='bookId',class="custom-select")
+                each book in books
+                    option(value= book.id) #{book.title}
         button(class="btn btn-outline-secondary") Create

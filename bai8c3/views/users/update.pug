@@ -2,15 +2,19 @@ extends ../layout/common
 
 block content
   h1 Hello, My name is UpdatesUser!!!
+  if errors   
+    each err in errors
+      .alert.alert-danger= err
   button(class="btn btn-outline-warning ml-2")
     a(href="/users") HOME
   form(method="POST" id="1")
+    .form-group
       label(for="name") New Name: 
-      input(type="text",name='name',class="btn btn-outline-secondary")
-      br
+      input#name.form-control(type="text",name='name',value=valued ? valued.name:"")
+    .form-group
       label(for="phone") New Phone: 
-      input(type="number",name='phone',class="btn btn-outline-secondary")
-      button(class="btn btn-danger ml-3") Update
+      input#phone.form-control(type="number",name='phone',value=valued ? valued.phone:"")
+    button.btn.btn-danger Update
   script.
     var a= document.getElementById("1");
     a.action= "/users/update" + id;

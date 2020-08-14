@@ -2,10 +2,13 @@
 a{
     text-decoration: none !important;
     display: block;
-    padding: 5px 10px;
+    padding: 10px 30px;
 }
 h1{
-    text-align:center !important ;
+    text-align:center !important;
+}
+button{
+    margin-bottom: 10px !important;
 }
 
 

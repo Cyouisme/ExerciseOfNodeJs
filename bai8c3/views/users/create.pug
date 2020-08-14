@@ -2,12 +2,18 @@ extends ../layout/common
 
 block content
     h1 Hello, My name is CreateUsers!!!
+
+    if errors
+        each err in errors
+            .alert.alert-danger= err
+
     button(class="btn btn-outline-warning ml-2 mb-2")
         a(href='/users') HOME
     form(action="/users/create", method="POST")
-        label(class='pl-2 pr-2') Name                                   
-        input(type="text", name="name",class="btn btn-outline-secondary")
-        br
-        label(class='pl-2 pr-2') Phone    
-        input(type="number", name="phone",class="btn btn-outline-secondary")
-        button(class="btn btn-danger ml-3") Create
+        .form-group
+            label(for="name") Name                                   
+            input#name.form-control(type="text", name="name", value=valued ? valued.name: "")
+        .form-group
+            label(for="phone") Phone    
+            input#phone.form-control(type="number", name="phone", value=valued ? valued.phone: "")
+        button.btn.btn-danger Create

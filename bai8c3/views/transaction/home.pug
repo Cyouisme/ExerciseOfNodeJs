@@ -19,5 +19,5 @@ block content
               td= tran.userId
               td= tran.bookId
               td 
-                a(href="/transactions/"+tran.id+"/complete") Complete
+                a.btn.btn-light(href="/transactions/"+tran.id+"/complete") Complete
           else if tran.iscomplete=== true
