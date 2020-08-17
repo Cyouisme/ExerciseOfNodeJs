@@ -25,6 +25,7 @@ module.exports.postCreate = function (req, res) {
 
 module.exports.complete = function(req,res){
     var id = req.params.id;
+    var errors = [];
     db.get('transactions').find({id:id}).assign({iscomplete:true}).write()
     res.redirect('/transactions')
 }

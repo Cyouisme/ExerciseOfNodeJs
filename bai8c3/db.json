@@ -18,19 +18,16 @@
   ],
   "users": [
     {
-      "name": "BHH",
-      "phone": "02565",
-      "id": "2GA2hS4fo"
-    },
-    {
       "name": "iamcyou",
       "phone": "6546531566",
-      "id": "jq2AvQ3pH"
+      "id": "jq2AvQ3pH",
+      "email": "cyou@gmail.com",
+      "password": "1"
     },
     {
       "name": "BHH",
-      "phone": "345345345345",
-      "id": "nQ8RslaXJ"
+      "phone": "02565",
+      "id": "ol7itKZjp"
     }
   ],
   "transactions": [
@@ -104,13 +101,13 @@
       "userId": "_Vryor2gb",
       "bookId": "pz--QPy2c",
       "id": "_EOPFRjqt",
-      "iscomplete": false
+      "iscomplete": true
     },
     {
       "userId": "_Vryor2gb",
       "bookId": "7AKtyWXmJ",
       "id": "xF0vYjCZd",
-      "iscomplete": false
+      "iscomplete": true
     }
   ],
   "tasks": []

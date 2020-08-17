@@ -24,19 +24,6 @@ module.exports.update = function (req, res) {
 
 module.exports.postCreate = function (req, res) {
     req.body.id = shortid.generate();
-    var errors = [];
-    if(!req.body.title){
-        errors.push('Title is required')
-    }
-    if(!req.body.description){
-        errors.push('Description is required')
-    }
-    if(errors.length){
-        res.render('store/create',{
-            errors: errors,
-            valued: req.body
-        })
-    }
     db.get('books').push(req.body).write()
     res.redirect('/books')
 }

@@ -4,6 +4,9 @@ var port = 3000;
 var bookRoute =  require('./routes/book.route')
 var userRoute = require('./routes/user.route')
 var transactionRoute = require('./routes/transaction.route')
+var cookieParser = require('cookie-parser')
+var authMiddleware = require('./middlewares/auth.middleware')
+var authRoute = require('./routes/auth.router')
 
 var app = express();
 app.set("views", "./views");
@@ -11,12 +14,14 @@ app.set("view engine", "pug");
 app.use(express.json()); // for parsing application/json
 app.use(express.urlencoded({ extended: true })); // for parsing application/x-www-form-urlencoded
 app.use(express.static('public'))
+app.use(cookieParser())
 
-app.get('/', (req, res) => res.render('index'));
+app.get('/',(req, res) => res.render('index'));
 
-app.use('/books', bookRoute);
-app.use('/users', userRoute);
-app.use('/transactions', transactionRoute)
+app.use('/books', authMiddleware.requireAuth,bookRoute);
+app.use('/users', authMiddleware.requireAuth,userRoute);
+app.use('/transactions', authMiddleware.requireAuth,transactionRoute)
+app.use('/auth', authRoute)
 
 app.listen(port, function () {
   console.log("Server listening on port " + port);
