@@ -1,0 +1,22 @@
+extends ../layout/common 
+
+block content
+    h1 Hi My Name is Books :))
+    button(class="btn btn-outline-warning d-inline ml-2")
+        a(href='/') HOMEMANAGE
+    button(class="btn btn-outline-warning ml-2")
+        a(href="/books/create") CreatesBook
+    table(class="table ml-2")
+        thead
+            tr
+                th Title
+                th Update
+                th Delete
+        tbody
+            each book in books
+                tr
+                    td= book.title
+                    td 
+                        a.btn.btn-light(href="/books/update/"+book.id) Update
+                    td    
+                        a.btn.btn-light(href="/books/"+book.id+"/delete") Delete

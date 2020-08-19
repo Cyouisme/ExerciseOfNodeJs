@@ -1,0 +1,29 @@
+extends ../layout/common 
+
+block content
+    h1.pb-5 Hi My Name is Users :))
+    .d-flex.align-items-center
+        button(class="btn btn-outline-warning ml-2")
+            a(href='/') HOMEMANAGE
+        button(class="btn btn-outline-warning ml-2")
+            a(href="/users/create") CreatesUser
+        form.ml-auto(action="/users/user",method="GET")
+            input(type="text",name="q",value=valued,class="btn btn-outline-secondary")
+            button.btn.btn-outline-warning.mt-2 search
+            
+    table(class="table ml-2")
+        thead
+            tr
+                th Name
+                th Phone
+                th Update
+                th Delete
+        tbody
+            each user in users
+                tr
+                    td= user.name
+                    td= user.phone
+                    td 
+                        a.btn.btn-light(href="/users/update/"+user.id) Update
+                    td    
+                        a.btn.btn-light(href="/users/"+user.id+"/delete") Delete

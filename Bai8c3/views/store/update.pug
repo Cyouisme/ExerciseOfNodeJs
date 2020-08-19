@@ -1,0 +1,17 @@
+extends ../layout/common 
+
+block content
+  h1 Hello, My name is UpdatesBook!!!
+  if errors 
+    each err in errors  
+      .alert.alert-danger= err
+  button(class="btn btn-outline-warning ml-2")
+    a(href="/books") HOME
+  form(method="POST" id="1")
+    .form-group 
+      label(for='title') New Title:
+      input#title.form-control(type="text",name='title')
+    button.btn.btn-danger Update
+  script.
+    var a= document.getElementById("1");
+    a.action= "/books/update" + id;
