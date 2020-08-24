@@ -1,0 +1,39 @@
+extends ../layouts/common
+block content
+    h2 Create User
+    form(action="/users/create" method="POST" enctype="multipart/form-data")  
+        .form-group
+        -var a=values?values.name:""
+            label(for="name") Name
+            
+            if a==""
+                       span#alertName.badge.badge-secondary.ml-2=namerequire
+            else
+                        span#alertName.badge.badge-secondary.ml-2=nameerror
+            
+            input#name(type="text" class="form-control" name="name" onkeypress="Countname()"  maxlength=30 value=values?values.name:"")
+        .form-group
+
+
+        -var a=values?values.phone:""
+            label(for="phone") Phone
+            if a==""
+                        span.badge.badge-secondary.ml-2=phonerequire
+            else
+                        span.badge.badge-secondary.ml-2=phoneerror
+            input#phone(type=" text" class="form-control" name="phone" value=values?values.phone:"")
+        .form-group
+            label(for="avatar") Avatar
+            input#avatar(type="file" class="form-control-file" name="avatar")
+        button(class="btn btn-primary") create
+    script.
+        function Countname(){
+           //var check = $("#name").val();
+            var Name = document.getElementById('name');
+            var alert=document.getElementById("alertName")
+           if(Name.value.length+1==30){
+              alert.innerHTML="Không được nhập quá 30 ký tự"
+           }
+        }
+        
+

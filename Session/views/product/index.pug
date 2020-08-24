@@ -1,0 +1,116 @@
+extends ../layouts/common
+block content
+    .d-flex.align-items-center.container 
+        form.ml-auto(action="/users/search" method="GET" class="d-flex")
+            input(type="text" name="q" )
+            .button(class="d-inline ml-2")
+            button(id="button" class="btn btn-primary " )=title
+    .boc.container
+        each p in product
+                .card.ml-5.mb-5.d-inline-block(style='width:13rem;position: unset;height:500px')
+                    img.card-img-top(src=p.image, alt='Card image cap')
+                    .card-body(style="")
+                        h5.card-title(style="height:50px;")=p.name
+                        p.card-text(style="height:200px")=p.description
+                        a.btn.btn-primary(href='/cart/add/'+p.id) Add to cart
+    nav(aria-label='Page navigation example')
+        if (e==1)
+                ul.pagination.justify-content-end
+                    li.page-item.active
+                        a.page-link.reqpage#active1(href='' data-pagenumber=1) 1
+                    li.page-item
+                        a.page-link.reqpage(href="" data-pagenumber=2) 2
+                    li.page-item
+                        a.page-link.reqpage(href='' data-pagenumber=3 ) 3
+                    li.page-item
+                        a.page-link.reqpage(href='' data-pagenumber=4 ) 4
+                    li.page-item
+                        a.page-link.reqpage(href='' data-pagenumber=5 ) 5
+                    li.page-item
+                                a.page-link#next(href="") Next
+        else    
+            if (e==2)
+                ul.pagination.justify-content-end
+                    li.page-item
+                        a.page-link#previous(href='', tabindex='-1') Previous
+                    li.page-item
+                        a.page-link.reqpage(href='' data-pagenumber=1) 1
+                    li.page-item.active
+                        a.page-link.reqpage#active1(href='' data-pagenumber=2) 2
+                    li.page-item
+                        a.page-link.reqpage(href='' data-pagenumber=3 ) 3
+                    li.page-item
+                        a.page-link.reqpage(href='' data-pagenumber=4 ) 4
+                    li.page-item
+                        a.page-link.reqpage(href='/product' data-pagenumber=5 ) 5
+                    li.page-item
+                            a.page-link#next(href="") Next
+            else 
+                if (e==number1)
+                    ul.pagination.justify-content-end
+                        li.page-item
+                            a.page-link#previous(href='') Previous
+                        li.page-item
+                            a.page-link.reqpage(href='' data-pagenumber=e-3)=e-3
+                        li.page-item
+                            a.page-link.reqpage(href='' data-pagenumber=e-2)=e-2
+                        li.page-item
+                            a.page-link.reqpage(href='' data-pagenumber=e-1 )=e-1
+                        li.page-item.active
+                            a.page-link#active1.reqpage(href='' data-pagenumber=e)=e
+                        li.page-item
+                            a.page-link.reqpage(href='' data-pagenumber=e+1)=e+1
+                        li.page-item
+                            a.page-link#next(href="") Next
+                else 
+                    if (e==number1+1)
+                         ul.pagination.justify-content-end
+                            li.page-item
+                                -var r="/product?page="+(e-1)
+                                a.page-link(href=r) Previous
+                            li.page-item
+                                a.page-link.reqpage(href='' data-pagenumber=e-4)=e-4
+                            li.page-item
+                                a.page-link.reqpage(href='' data-pagenumber=e-3)=e-3
+                            li.page-item
+                                a.page-link.reqpage(href='' data-pagenumber=e-2)=e-2
+                            li.page-item
+                                a.page-link.reqpage(href='' data-pagenumber=e-1 )=e-1
+                            li.page-item.active
+                                a.page-link.reqpage#active1(href='' data-pagenumber=number1+1 )=e
+                    else 
+                        if (e>number1)
+                            ul.pagination.justify-content-end
+                                li.page-item
+                                    -var r="/product?page="+(number1+1)
+                                    a.page-link#previous1.active1(href=r,data-page-number=number1+1) Previous
+                        else 
+                            ul.pagination.justify-content-end
+                                li.page-item                   
+                                    a.page-link#previous(href='', tabindex='-1') Previous
+                                li.page-item
+                                    a.page-link.reqpage(href='' data-pagenumber=e-2)=e-2
+                                li.page-item
+                                    a.page-link.reqpage(href='' data-pagenumber=e-1)=e-1
+                                li.page-item.active
+                                    a.page-link.reqpage#active1(href='' data-pagenumber=e)=e
+                                li.page-item
+                                    a.page-link.reqpage(href='' data-pagenumber=e+1 )=e+1
+                                li.page-item
+                                    a.page-link.reqpage(href='' data-pagenumber=e+2 )=e+2  
+                                li.page-item
+                                    a.page-link#next(href='') Next
+    script.
+        var a=document.getElementsByClassName("reqpage")
+        var b=document.getElementById("active1")
+        var c=document.getElementById("next")
+        var d=document.getElementById("previous")
+        var e=document.getElementById("product");
+        a[0].href="/product?page="+a[0].textContent
+        a[1].href="/product?page="+a[1].textContent
+        a[2].href="/product?page="+a[2].textContent
+        a[3].href="/product?page="+a[3].textContent
+        a[4].href="/product?page="+a[4].textContent
+        c.href="/product?page="+(parseInt(b.dataset.pagenumber)+1)
+        d.href="/product?page="+(parseInt(b.dataset.pagenumber)-1)
+        e.innerHTML="a";

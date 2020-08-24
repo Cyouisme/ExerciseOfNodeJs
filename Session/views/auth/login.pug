@@ -1,0 +1,23 @@
+extends ../layouts/common
+block content
+    h2 Login
+    form(action="/auth/login" method="POST")  
+        .form-group
+        -var a=values?values.email:""
+            if CanLogin=="true"
+                span.badge.badge-secondary.ml-2.d-block=Loginerror
+            label(for="email") Email
+            if a==""
+                       .badge.badge-secondary.ml-2=emailrequire
+            else
+                        .badge.badge-secondary.ml-2=emailerror
+            input#email(type="text" class="form-control" name="email" value=values?values.email:"")
+        .form-group
+        -var a=values?values.password:""
+            label(for="password") Password
+            if a==""
+                        .badge.badge-secondary.ml-2=passwordrequire
+            else
+                        .badge.badge-secondary.ml-2=passworderror
+            input#password(type="password" class="form-control" name="password" value=values?values.password:"")
+        button(class="btn btn-primary") Login

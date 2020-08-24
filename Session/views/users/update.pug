@@ -1,0 +1,12 @@
+extends ../layouts/common
+block content
+    h2 Update User
+    form#form1( method="POST")  
+        .form-group
+            label(for="nameupdate") NameUpdate
+            input#nameupdate(type="text" class="form-control" name="nameupdate")
+        button(class="btn btn-primary") Update
+    script.
+      var a=document.getElementById("form1");
+      a.action="/users/update"+id;
+        

@@ -1,0 +1,10 @@
+.product{
+    border-radius: 2px!important;
+    border-color: red!important;
+    color: red!important;
+    
+}
+.product a{
+    text-decoration: none!important;
+    color:red;
+}
