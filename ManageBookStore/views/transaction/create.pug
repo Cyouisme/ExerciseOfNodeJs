@@ -1,0 +1,20 @@
+extends ../layout/common 
+
+block content
+    h1 Hello, My name is CreateTRansaction!!!
+    button(class="btn btn-outline-warning ml-2")
+        a(href='/transactions') HOME
+    form(action='/transactions/create',method='POST')
+        .form-group
+            label Create Transactions:
+            select.form-group(name='userId',class="custom-select")
+                if user.isAdmin === true
+                    each user in users
+                        option(value= user.id) #{user.name}
+                else
+                    option(value= user.id) #{user.name}
+        .form-group            
+            select.form-group(name='bookId',class="custom-select")
+                each book in books
+                    option(value= book.id) #{book.title}
+        button(class="btn btn-outline-secondary") Create
