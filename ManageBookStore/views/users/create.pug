@@ -8,7 +8,7 @@ block content
     if errors
         each err in errors
             .alert.alert-danger= err
-            
+           
     form(action="/users/create", method="POST")
         .form-group
             label(for="name") Name                                   
@@ -17,3 +17,5 @@ block content
             label(for="phone") Phone    
             input#phone.form-control(type="number", name="phone", value=valued ? valued.phone: "")
         button.btn.btn-danger Create
+        
+        

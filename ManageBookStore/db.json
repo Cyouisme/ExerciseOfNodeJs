@@ -29,7 +29,7 @@
       "email": "admin@gmail.com",
       "password": "$2b$10$5VpuL3X2Ws7VJLuUVEKgnu0.JmqkjmNHYY1Hau2BE1jDkl1b/D/JC",
       "isAdmin": true,
-      "wrongLoginCount": 0
+      "wrongLoginCount": 1
     },
     {
       "name": "BHH",
@@ -37,7 +37,7 @@
       "id": "ol7itKZjp",
       "email": "cyou@gmail.com",
       "password": "$2b$10$604jwvC6/qyl/lmm0qnYmeZQmUSmzsmvjriqH.Kbokle0R/DTmypW",
-      "wrongLoginCount": 2
+      "wrongLoginCount": 0
     },
     {
       "name": "Cyou",

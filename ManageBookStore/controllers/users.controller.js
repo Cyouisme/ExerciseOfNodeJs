@@ -31,6 +31,14 @@ module.exports.delete = function (req, res) {
     res.redirect("/users");
 }
 
+module.exports.view = function (req, res) {
+    var id = req.params.id;
+    var user = db.get('users').find({ id: id }).value()
+    res.render('users/view', {
+        users: user
+    })
+}
+
 module.exports.update = function (req, res) {
     var id = req.params.id;
     res.render("users/update");

@@ -13,14 +13,15 @@ block content
         thead
             tr
                 th Name
-                th Phone
+                th View
                 th Update
                 th Delete
         tbody
             each user in users
                 tr
                     td= user.name
-                    td= user.phone
+                    td 
+                        a.btn.btn-outline-warning(href="/users/view/"+user.id) View
                     td 
                         a.btn.btn-outline-warning(href="/users/update/"+user.id) Update
                     td    

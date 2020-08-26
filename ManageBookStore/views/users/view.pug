@@ -1,0 +1,19 @@
+extends ../layout/common 
+
+block content
+    h1 Hello, My name is ViewUsers!!!
+
+    button(class="btn btn-outline-warning ml-2 mb-2")
+        a(href='/users') HOME
+    form(action="users/view"+id,method="GET")
+        table(class="table ml-2")
+            thead
+                tr
+                    th Name
+                    th Phone
+            tbody
+                tr
+                    td= user.name
+                    td= user.phone
+            
+        
