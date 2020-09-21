@@ -9,13 +9,16 @@ block content
         each err in errors
             .alert.alert-danger= err
            
-    form(action="/users/create", method="POST")
+    form(action="/users/create", method="POST",enctype="multipart/form-data")
         .form-group
             label(for="name") Name                                   
             input#name.form-control(type="text", name="name",maxlength="30", value=valued ? valued.name: "")
         .form-group
             label(for="phone") Phone    
             input#phone.form-control(type="number", name="phone", value=valued ? valued.phone: "")
+        .form-group
+            label(for="avatar") Avatar    
+            input#avatar.form-control-file(type="file", name="avatar")
         button.btn.btn-danger Create
         
         

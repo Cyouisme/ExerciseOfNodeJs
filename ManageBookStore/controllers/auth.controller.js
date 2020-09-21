@@ -1,5 +1,4 @@
-const sgMail = require("@sendgrid/mail");
-sgMail.setApiKey(process.env.SENDGRID_API_KEY);
+
 // var md5 = require('md5')
 var db = require('../db')
 var bcrypt = require('bcrypt')
@@ -28,27 +27,24 @@ module.exports.postLogin = async function (req, res, next) {
     }
 
     if (user.wrongLoginCount >= 4) {
-        let msg = {
-            to: user.email,
+        const sgMail = require('@sendgrid/mail');
+        sgMail.setApiKey(process.env.SENDGRID_API_KEY);
+        console.log(process.env.SENDGRID_API_KEY);
+        const msg = {
+            to: "hbcqb2k@gmail.com",
             from: "hbcqb2k@gmail.com",
-            subject: "Your account has been locked.",
-            text:
-                "Your account has been locked, because you entered the wrong password more than the specified number of times",
-            html: "<strong>Contact us if there is a mistake</strong>"
+            subject: 'Sending with Twilio SendGrid is Fun',
+            text: 'and easy to do anywhere, even with Node.js',
+            html: '<strong>and easy to do anywhere, even with Node.js</strong>',
         };
+        sgMail.send(msg);
 
-        try {
-            await sgMail.send(msg);
-        } catch (error) {
-            console.log(error);
-        }
-
-        res.render("auth/login", {
+        return res.render("auth/login", {
             errors: ["Your account has been locked."],
             valued: req.body
         });
 
-        return;
+
     }
     //use await for bcrypt
     var isCorrectPassword = await bcrypt.compare(password, user.password)

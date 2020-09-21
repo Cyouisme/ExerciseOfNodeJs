@@ -1,4 +1,5 @@
 var shortid = require("shortid");
+const { find } = require("../db");
 var db = require("../db");
 // const { find } = require("../../db");
 
@@ -46,6 +47,10 @@ module.exports.update = function (req, res) {
 
 module.exports.postCreate = function (req, res) {
     req.body.id = shortid.generate();
+    if(!req.file)
+        req.body.avatar = "uploads\\26306066987a80ca8a795e384c726bc9";
+    else   
+        req.body.avatar = req.file.path.split('\\').slice(1).join('\\');
     db.get("users")
         .push(req.body)
         .write();

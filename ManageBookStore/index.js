@@ -11,6 +11,7 @@ var authMiddleware = require('./middlewares/auth.middleware')
 var authRoute = require('./routes/auth.router')
 // var mail = require('./routes/mail.router')
 var count = require('./countCookie/count')
+var product = require("./routes/product.router")
 
 var app = express();
 app.set("views", "./views");
@@ -28,6 +29,7 @@ app.use('/users', authMiddleware.requireAuth, userRoute);
 app.use('/transactions', authMiddleware.requireAuth, transactionRoute)
 // app.use('/mail',mail)
 app.use('/auth', authRoute)
+app.use('/products',product)
 
 app.listen(port, function () {
   console.log("Server listening on port " + port);
